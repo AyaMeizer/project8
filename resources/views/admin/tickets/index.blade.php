@@ -123,9 +123,9 @@
                                 .
                             </div>
                             <div>
-                       <button class="create"><a href="{{route('tickets.create')}}">Create Room</a></button>
+                        <button class="create"><a href="{{route('tickets.create')}}">Create Movie</a></button>
 
-                                
+
                             </div>
                         </div>
                         <div class="card mb-4">
@@ -137,28 +137,28 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Name</th> 
+                                            <th>Name</th>
                                             <th>Description</th>
                                             <th>Time</th>
                                             <th>Price</th>
-                                            <th>Seat </th>                                            
+                                            <th>Seat </th>
                                             <th>Image </th>
                                             <th>Edit</th>
                                             <th>delete</th>
                                         </tr>
                                     </thead>
-                
+
                                     <tbody>
                                         @foreach($tickets as $ticket)
                                         <tr>
-                                            <td>{{$ticket->name}}</td>   
+                                            <td>{{$ticket->name}}</td>
                                             <td>{{$ticket->description}}</td>
                                             <td>{{$ticket->time}}</td>
                                             <td>{{$ticket->price}}</td>
                                             <td>{{$ticket->seat}}</td>
                                             <td ><img class="img-thumbnail col-5" src="{{$ticket->Image}}" alt="{{$ticket->name}}"/></td>
                                             <td><button class="edit"><a href="{{route('tickets.edit',$ticket->id)}}">edit</a></button></td>
-                                          
+
                                             <td>
                                             <form method="POST" action="{{route('tickets.destroy',$ticket->id)}}">
                                              @csrf
