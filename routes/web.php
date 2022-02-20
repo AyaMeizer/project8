@@ -50,5 +50,6 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
+
 Route::post('/movies/{id}', [TicketController::class, 'book'])->name('movies.book');
 
