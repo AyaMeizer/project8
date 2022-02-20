@@ -5671,7 +5671,7 @@ ul {
   height: 538px;
 }
 .common-hero {
-  height: 385px;
+  height: 150px;
   background: url('../images/uploads/user-hero-bg.jpg') no-repeat;
 }
 .common-hero:before {
@@ -5949,9 +5949,7 @@ ul {
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
-.movie-single {
-  margin-top: -415px;
-}
+
 .movie-single .movie-img,
 .movie-single .mv-ceb {
   margin-right: 30px;
@@ -7787,7 +7785,7 @@ p.ceb-single {
   border-color: #d0dae4;
 }
 header {
-  position: absolute;
+  /* position: absolute; */
   z-index: 100;
   width: 100%;
   background-color: transparent;
