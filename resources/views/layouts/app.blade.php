@@ -83,13 +83,14 @@
                     <ul class="nav navbar-nav flex-child-menu menu-right">
                         @guest
                             @if (Route::has('login'))
-                                <li class="loginLink">
+                            <li class="dropdown first">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
-                                <li class="btn signupLink">
+                                <li class="btn">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif

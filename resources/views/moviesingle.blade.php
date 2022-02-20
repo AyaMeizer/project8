@@ -19,11 +19,7 @@
                                         class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a>
                                 </div>
                             </div>
-                            <div class="btn-transform transform-vertical">
 
-                                <div><a href="{{ route('ticketform', $ticket->id) }}" class="item item-2 yellowbtn"><i
-                                            class="ion-card"></i></a></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,7 +62,7 @@
 
                         <div class="contact_join">
 
-                            <form action="">
+                            <form action="{{ url('/movieAdd/'.$ticket->id) }}">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single_input">
@@ -90,7 +86,7 @@
 
                                             <input min={{ date_create()->format('Y-m-d') }} style="width: 345px" class="formBooking"
                                                 name="date" type="date" placeholder="Phone no.">
-                                            <select style="width: 345px" class="formBooking">
+                                            <select name="time" style="width: 345px" class="formBooking">
                                                 <option value="09:00-11:00">09:00-11:00</option>
                                                 <option value="11:00-13:00">11:00-13:00</option>
                                                 <option value="14:00-16:00">14:00-16:00</option>
@@ -102,9 +98,9 @@
 
                                         </div>
                                         <div style="margin-top: 2.5em">
-                                            <a href="{{ route('ticketform', $ticket->id) }}"
+                                            <button
                                                 class=" item item-2 yellowbtn"> <i class="ion-card"></i> Buy
-                                                ticket</a>
+                                                ticket</button>
                                         </div>
 
                             </form>
