@@ -37,14 +37,27 @@ class ShowmovieController extends Controller
 
     public function insert(Request $request, $id)
     {
+
+        if (!Auth::user()){
+           return redirect('login');
+        }
+
+
+
         $oneMovie = Ticket::find($id);
         $oneBook = booking::all();
         $book = new booking();
         $book->name = $request->input('name');
+        $book->date = $request->input('date');
+        $book->time = $request->input('time');
+
         $book->user_id = Auth::user()->id;
         foreach ($oneBook as $item) {
-            if ($item->name == $book->name && $item->user_id == $book->user_id) {
-                return redirect('destinations/' . $id)->withErrors('You already have a booking on this period');
+            if (
+                $item->name == $book->name && $item->user_id == $book->user_id &&
+                $item->date == $book->date && $item->time == $book->time
+            ) {
+                return redirect('moviesingle/' . $id)->with('success','You already have a booking on this Time ' . $item->time . ' ' . ' on ' . ' ' .$item->date );
             }
         }
 
@@ -53,11 +66,11 @@ class ShowmovieController extends Controller
 
 
         $book->phone = $request->input('phone');
-        $book->date = $request->input('date');
-        $book->time = $request->input('time');
+        // $book->date = $request->input('date');
+        // $book->time = $request->input('time');
         $book->price = $price;
         $book->movie_id = $id;
         $book->save();
-        return redirect('/moviegrid')->withErrors('You have successfully booked the trip');
+        return redirect('moviesingle/' . $id)->with('success','You have successfully booked the ticket' . $item->time . ' ' . ' on ' . ' ' . $item->date);
     }
 }

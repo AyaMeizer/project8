@@ -23,16 +23,11 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <style>
-
-
-
-.formBooking{
-    background-color: white !important;
-    color: black !important;
-    margin:0 1em 1em 0;
-}
-
-
+    .formBooking {
+        background-color: white !important;
+        color: black !important;
+        margin: 0 1em 1em 0;
+    }
 
 </style>
 
@@ -51,8 +46,8 @@
                             <span></span>
                         </div>
                     </div>
-                    <a href="{{ url('/') }}"><img class="logo" src="{{ asset('images/logo1.png') }}" alt="" width="119"
-                            height="58"></a>
+                    <a href="{{ url('/') }}"><img class="logo" src="{{ asset('images/logo1.png') }}"
+                            alt="" width="119" height="58"></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
@@ -60,20 +55,20 @@
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
-                        <li >
-                            <a href="{{ asset(url('/')) }}" > Home</a>
+                        <li>
+                            <a href="{{ asset(url('/')) }}"> Home</a>
                         </li>
 
 
-                        <li >
+                        <li>
                             <a href="{{ url('/moviegrid') }}" class="btn ">Movies</a>
                         </li>
 
-                        <li >
+                        <li>
                             <a href="{{ url('/about') }}" class="btn "> About</a>
                         </li>
 
-                        <li >
+                        <li>
                             <a href="{{ url('/contact') }}" class="btn "> Contact</a>
                         </li>
                         {{-- <li class="loginLink"><a href="#">LOG In</a></li>
@@ -83,7 +78,7 @@
                     <ul class="nav navbar-nav flex-child-menu menu-right">
                         @guest
                             @if (Route::has('login'))
-                            <li >
+                                <li>
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                                 </li>
@@ -97,12 +92,18 @@
                         @else
 
 
-                            <li class="loginLink">
-                                <a class="nav-link" href="{{ route('login') }}">{{ Auth::user()->name }}</a>
+                            <li>
+
+                                @if (Auth::user()->role_as !== 0)
+                                    <a class="nav-link" href="{{ url('/admin/tickets') }}">Dashboard</a>
+                                @else
+                                    <a class="nav-link"
+                                        href="{{ url('/profile') }}">{{ Auth::user()->name }}</a>
+                                @endif
                             </li>
                             <li class="btn signupLink">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                                document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                             </li>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -110,7 +111,7 @@
 
 
                         @endguest
-                        </ul>
+                    </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </nav>

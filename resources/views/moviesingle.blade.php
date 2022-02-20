@@ -4,19 +4,29 @@
     <!-- END | Header -->
 
 
+
     <div class="page-single movie-single movie_single">
         <div class="container">
+            @if (Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ Session::get('success') }}</p>
+                </div>
+            @endif
             <div class="row ipad-width2">
                 <div class="col-md-4 col-sm-12 col-xs-12">
+
                     <div class="movie-img sticky-sb">
+
                         <img style="height: 400px;
-                                                                    width: 330px;" src="{{ $ticket->Image }}" alt="">
+                                                                                width: 330px;" src="{{ $ticket->Image }}"
+                            alt="">
                         <div class="movie-btn">
                             <div class="btn-transform transform-vertical red">
                                 <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch
                                         Trailer</a></div>
                                 <div><a href="https://www.youtube.com/embed/o-0hcF97wy0"
-                                        class="item item-2 redbtn fancybox-media hvr-grow"><i class="ion-play"></i></a>
+                                        class="item item-2 redbtn fancybox-media hvr-grow"><i
+                                            class="ion-play"></i></a>
                                 </div>
                             </div>
 
@@ -62,7 +72,7 @@
 
                         <div class="contact_join">
 
-                            <form action="{{ url('movieAdd/'.$ticket->id) }}">
+                            <form action="{{ url('movieAdd/' . $ticket->id) }}">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single_input">
@@ -72,10 +82,10 @@
                                             <div style="display: flex;">
 
 
-                                                <input class="formBooking" name="name" type="text"
+                                                <input required class="formBooking" name="name" type="text"
                                                     placeholder="Your Name">
 
-                                                <input class="formBooking" name="phone" type="text"
+                                                <input required class="formBooking" name="phone" type="text"
                                                     placeholder="Phone no.">
                                             </div>
 
@@ -84,8 +94,9 @@
 
 
 
-                                            <input value="{{ date_create()->format('Y-m-d') }}" name="date" min={{ date_create()->format('Y-m-d') }} style="width: 345px"
-                                                class="formBooking"  type="date" placeholder="Phone no.">
+                                            <input value="{{ date_create()->format('Y-m-d') }}" name="date"
+                                                min={{ date_create()->format('Y-m-d') }} style="width: 345px"
+                                                class="formBooking" type="date" placeholder="Phone no.">
                                             <select name="time" style="width: 345px" class="formBooking">
                                                 <option value="09:00-11:00">09:00-11:00</option>
                                                 <option value="11:00-13:00">11:00-13:00</option>
@@ -98,8 +109,26 @@
                                             <input name="price" type="hidden" value="{{ $ticket->price }}">
                                         </div>
                                         <div style="margin-top: 2.5em">
-                                            <button class=" item item-2 yellowbtn"> <i class="ion-card"></i> Buy
-                                                ticket</button>
+                                            <script>
+                                                function err() {
+
+                                                    alert('please login');
+                                                }
+                                            </script>
+
+                                            @if (!Auth::user())
+                                                <button onclick="err()" class=" item item-2 yellowbtn"> <i
+                                                        class="ion-card"></i> Buy
+                                                    ticket</button>
+
+                                            @else
+
+                                                <button class=" item item-2 yellowbtn"> <i class="ion-card"></i> Buy
+                                                    ticket</button>
+                                            @endif
+
+
+
                                         </div>
 
                             </form>
