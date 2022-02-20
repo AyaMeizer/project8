@@ -26,6 +26,7 @@ Route::get('/', function () {
 Route::resource('movies',TicketController::class);
 Route::get('moviegrid',[ShowmovieController::class,'showmovie']);
 Route::get('moviesingle/{id}',[ShowmovieController::class,'showsinglemovie'])->name('moviesingle');
+Route::get('movieAdd/{id}', [ShowmovieController::class, 'insert']);
 Route::get('ticketform/{id}',[ShowmovieController::class,'showbooking'])->name('ticketform');
 
 
@@ -35,7 +36,7 @@ Route::resource('admin/users', UserContoller::class);
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Route::post('/movies/{id}', [TicketController::class, 'book'])->name('movies.book');
 

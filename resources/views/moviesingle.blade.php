@@ -10,7 +10,7 @@
                 <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="movie-img sticky-sb">
                         <img style="height: 400px;
-                                                                width: 330px;" src="{{ $ticket->Image }}" alt="">
+                                                                    width: 330px;" src="{{ $ticket->Image }}" alt="">
                         <div class="movie-btn">
                             <div class="btn-transform transform-vertical red">
                                 <div><a href="#" class="item item-1 redbtn"> <i class="ion-play"></i> Watch
@@ -62,7 +62,7 @@
 
                         <div class="contact_join">
 
-                            <form action="{{ url('/movieAdd/'.$ticket->id) }}">
+                            <form action="{{ url('movieAdd/'.$ticket->id) }}">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="single_input">
@@ -84,8 +84,8 @@
 
 
 
-                                            <input min={{ date_create()->format('Y-m-d') }} style="width: 345px" class="formBooking"
-                                                name="date" type="date" placeholder="Phone no.">
+                                            <input value="{{ date_create()->format('Y-m-d') }}" name="date" min={{ date_create()->format('Y-m-d') }} style="width: 345px"
+                                                class="formBooking"  type="date" placeholder="Phone no.">
                                             <select name="time" style="width: 345px" class="formBooking">
                                                 <option value="09:00-11:00">09:00-11:00</option>
                                                 <option value="11:00-13:00">11:00-13:00</option>
@@ -95,11 +95,10 @@
 
                                             </select>
 
-
+                                            <input name="price" type="hidden" value="{{ $ticket->price }}">
                                         </div>
                                         <div style="margin-top: 2.5em">
-                                            <button
-                                                class=" item item-2 yellowbtn"> <i class="ion-card"></i> Buy
+                                            <button class=" item item-2 yellowbtn"> <i class="ion-card"></i> Buy
                                                 ticket</button>
                                         </div>
 

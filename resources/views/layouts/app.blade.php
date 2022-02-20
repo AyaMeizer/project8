@@ -60,20 +60,20 @@
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
-                        <li class="dropdown first">
-                            <a href="{{ url('/') }}" class="btn "> Home</a>
+                        <li >
+                            <a href="{{ asset(url('/')) }}" > Home</a>
                         </li>
 
 
-                        <li class="dropdown first">
+                        <li >
                             <a href="{{ url('/moviegrid') }}" class="btn ">Movies</a>
                         </li>
 
-                        <li class="dropdown first">
+                        <li >
                             <a href="{{ url('/about') }}" class="btn "> About</a>
                         </li>
 
-                        <li class="dropdown first">
+                        <li >
                             <a href="{{ url('/contact') }}" class="btn "> Contact</a>
                         </li>
                         {{-- <li class="loginLink"><a href="#">LOG In</a></li>
@@ -83,7 +83,7 @@
                     <ul class="nav navbar-nav flex-child-menu menu-right">
                         @guest
                             @if (Route::has('login'))
-                            <li class="dropdown first">
+                            <li >
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
 
                                 </li>
