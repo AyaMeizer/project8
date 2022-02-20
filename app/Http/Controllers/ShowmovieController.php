@@ -57,7 +57,7 @@ class ShowmovieController extends Controller
                 $item->name == $book->name && $item->user_id == $book->user_id &&
                 $item->date == $book->date && $item->time == $book->time
             ) {
-                return redirect('moviesingle/' . $id)->with('success','You already have a booking on this Time ' . $item->time . ' ' . ' on ' . ' ' .$item->date );
+                return redirect('moviesingle/' . $id)->with('success','You already have a booking on this Time ' . $book->time . ' ' . ' on ' . ' ' .$book->date );
             }
         }
 
@@ -71,6 +71,6 @@ class ShowmovieController extends Controller
         $book->price = $price;
         $book->movie_id = $id;
         $book->save();
-        return redirect('moviesingle/' . $id)->with('success','You have successfully booked the ticket' . $item->time . ' ' . ' on ' . ' ' . $item->date);
+        return redirect('moviesingle/' . $id)->with('success','You have successfully booked the ticket' . $book->time . ' ' . ' on ' . ' ' . $book->date);
     }
 }

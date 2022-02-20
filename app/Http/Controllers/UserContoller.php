@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\booking;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserContoller extends Controller
 {
@@ -96,5 +97,31 @@ class UserContoller extends Controller
         //
         $user->delete();
         return redirect()->back();
+    }
+
+
+
+
+
+
+    public function userProfile()
+    {
+        $booking = booking::where('user_id','=',Auth::user()->id)->get();
+
+        $userD =  Auth::user();
+        return view('profile', compact('userD','booking'));
+    }
+
+    public function updateProfileUser(Request $request, $id)
+    {
+        $userD = User::find($id);
+
+        $userD->name = $request->input('name');
+        $userD->email = $request->input('email');
+        $userD->phone = $request->input('phone');
+
+
+        $userD->updateOrFail();
+        return redirect('/profile')->with('success', 'Your Information has been Successfully Updated!');
     }
 }
